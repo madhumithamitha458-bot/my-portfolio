@@ -1,0 +1,176 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Madhumitha Developer Portfolio API",
+    "description": "Interactive OpenAPI documentation for Madhumitha's portfolio services, showcasing developer profile data, technical skills, projects, and contact endpoints.",
+    "version": "1.0.0",
+    "contact": {
+      "name": "Madhumitha",
+      "email": "madhumithamitha458@gmail.com",
+      "url": "https://github.com/madhumithamitha458-bot"
+    }
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8080",
+      "description": "Local Docker Environment"
+    },
+    {
+      "url": "https://madhumithamitha458-bot.github.io/my-portfolio",
+      "description": "Production / GitHub Pages"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Profile",
+      "description": "Developer biographical details and education"
+    },
+    {
+      "name": "Skills",
+      "description": "Technical competencies, frameworks, and tooling"
+    },
+    {
+      "name": "Projects",
+      "description": "Showcase of featured software engineering projects"
+    },
+    {
+      "name": "Contact",
+      "description": "Communication and message dispatch"
+    }
+  ],
+  "paths": {
+    "/api/profile": {
+      "get": {
+        "tags": ["Profile"],
+        "summary": "Retrieve developer profile information",
+        "description": "Returns biographical overview, education details, and professional titles.",
+        "responses": {
+          "200": {
+            "description": "Profile data retrieved successfully",
+            "content": {
+              "application/json": {
+                "example": {
+                  "name": "Madhumitha",
+                  "title": "Full Stack Developer & IT Student",
+                  "education": "B.Tech in Information Technology",
+                  "interests": ["Full Stack Engineering", "AI/ML", "DevOps & Docker", "Cloud Computing"],
+                  "github": "https://github.com/madhumithamitha458-bot",
+                  "email": "madhumithamitha458@gmail.com"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/skills": {
+      "get": {
+        "tags": ["Skills"],
+        "summary": "Get categorized technical skills",
+        "description": "Fetches a categorized list of engineering competencies including Frontend, Backend, and DevOps tooling.",
+        "responses": {
+          "200": {
+            "description": "List of technical skills",
+            "content": {
+              "application/json": {
+                "example": {
+                  "frontend": ["HTML5", "CSS3 / Modern Layouts", "JavaScript (ES6+)", "React.js"],
+                  "backend": ["Node.js", "Express.js", "MongoDB", "REST APIs"],
+                  "devops_and_tools": ["Docker", "Nginx", "Git & GitHub", "Antigravity IDE / VS Code"]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/projects": {
+      "get": {
+        "tags": ["Projects"],
+        "summary": "List featured portfolio projects",
+        "description": "Returns projects array with description, technology stack tags, and repository URLs.",
+        "responses": {
+          "200": {
+            "description": "Array of projects",
+            "content": {
+              "application/json": {
+                "example": [
+                  {
+                    "id": "mern-todo",
+                    "title": "MERN Task Management",
+                    "category": "Full Stack",
+                    "technologies": ["MongoDB", "Express", "React", "Node.js"],
+                    "description": "Task management system with responsive UI and REST endpoints."
+                  },
+                  {
+                    "id": "voice-sign-translator",
+                    "title": "Voice to Sign Language Translator",
+                    "category": "AI / ML",
+                    "technologies": ["Python", "Speech API", "Machine Learning"],
+                    "description": "Assistive AI converting speech audio into sign language representations."
+                  },
+                  {
+                    "id": "dockerized-portfolio",
+                    "title": "Containerized Portfolio & Swagger API",
+                    "category": "DevOps & Web",
+                    "technologies": ["Docker", "Nginx", "Swagger / OpenAPI"],
+                    "description": "Cloud-native developer portfolio packaged in Alpine Nginx with Swagger UI."
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/contact": {
+      "post": {
+        "tags": ["Contact"],
+        "summary": "Submit a contact message inquiry",
+        "description": "Accepts contact form message payload for recruitment, collaboration, or general inquiries.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["name", "email", "message"],
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "example": "Jane Doe"
+                  },
+                  "email": {
+                    "type": "string",
+                    "format": "email",
+                    "example": "jane@company.com"
+                  },
+                  "message": {
+                    "type": "string",
+                    "example": "Hi Madhumitha, we would love to interview you for a developer role!"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Message dispatched successfully",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": "success",
+                  "message": "Inquiry received. Madhumitha will respond shortly."
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid payload inputs"
+          }
+        }
+      }
+    }
+  }
+}

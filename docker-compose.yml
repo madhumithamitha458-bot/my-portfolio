@@ -1,9 +1,22 @@
 version: '3.8'
 
 services:
+  # 1. Main Container: Serves Developer Portfolio with integrated Swagger UI
   portfolio:
     build: .
     container_name: madhumitha-portfolio
     ports:
       - "8080:80"
+    restart: always
+
+  # 2. Standalone Swagger Container: Official Swagger UI console
+  swagger-ui:
+    image: swaggerapi/swagger-ui:latest
+    container_name: madhumitha-swagger-ui
+    ports:
+      - "8081:8080"
+    volumes:
+      - ./swagger.json:/openapi.json
+    environment:
+      SWAGGER_JSON: /openapi.json
     restart: always

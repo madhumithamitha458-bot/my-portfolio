@@ -18,7 +18,8 @@ A modern, responsive, and containerized developer portfolio website showcasing f
 - **📂 Categorized Skill Showcase:** Interactive pills organizing Frontend, Backend, Databases, and DevOps competencies.
 - **🚀 Featured Projects:** Dedicated cards with tech tags and links to source code repositories.
 - **📬 Interactive Contact Module:** Quick email copy button (`madhumithamitha458@gmail.com`) with instant feedback and direct mail composer.
-- **🐳 Docker & Nginx Containerization:** Production-ready container image powered by Alpine Linux for minimal footprint and maximum speed.
+- **📄 Swagger & OpenAPI 3.0 Documentation:** Interactive API testing console (`docs.html`) loaded with `swagger.json` spec covering profile, skills, projects, and contact endpoints.
+- **🐳 Docker & Nginx Containerization:** Production-ready container image powered by Alpine Linux with multi-container `docker-compose` supporting both the portfolio and official Swagger UI.
 
 ---
 
@@ -28,7 +29,9 @@ A modern, responsive, and containerized developer portfolio website showcasing f
 my-portfolio/
 ├── Dockerfile            # Alpine Nginx container build definition
 ├── .dockerignore         # Excludes non-runtime files from Docker build
-├── docker-compose.yml    # Single-command local container orchestration
+├── docker-compose.yml    # Orchestrates Portfolio (8080) & Swagger UI (8081)
+├── swagger.json          # OpenAPI 3.0.3 API specification
+├── docs.html             # Interactive Swagger UI API documentation console
 ├── index.html            # Main semantic webpage markup
 ├── style.css             # Glassmorphism design system & responsive styling
 ├── script.js             # Typing effects, navigation spy & clipboard interactions
